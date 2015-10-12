@@ -1,0 +1,50 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(./) app/vendor.css -->
+      <!-- bower:css -->
+
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,./}) app/app.css -->
+
+      <!-- injector:css -->
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="seedApp">
+    <div class="container">
+    <div class="row">
+
+      <!-- Code for Navigation & Breadcrumb & Pagination-->
+      <div ui-view></div>
+
+    </div>
+  </div>
+
+    <!--[if lt IE 9]>
+    <![endif]-->
+    <!-- build:js(./) app/vendor.js -->
+      <!-- bower:js -->
+
+      <!-- endbower -->
+    <!-- endbuild -->
+
+
+        <!-- build:js(.tmp) app/app.js -->
+
+          <script src="app/app.js"></script>
+
+        <!-- endbuild -->
+</body>
+</html>

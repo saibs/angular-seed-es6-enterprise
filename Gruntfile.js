@@ -403,6 +403,9 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         options: {
+          browserifyOptions: {
+            debug: true
+          },
           transform: [["babelify", { "stage": 0 }]]
         },
         files: [{

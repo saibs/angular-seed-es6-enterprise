@@ -65,9 +65,9 @@ module.exports = function (grunt) {
 
           '{.tmp,<%= config.appPath %>}/**/*.js',
 
-          '!{.tmp,<%= config.appPath %>}**/*.spec.js',
+          '!{.tmp,<%= config.appPath %>}/**/*.spec.js',
           '!{.tmp,<%= config.appPath %>}/**/*.mock.js',
-          '<%= config.appPath %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+          'assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {
           livereload: true
@@ -89,8 +89,8 @@ module.exports = function (grunt) {
             return [
               connect.static('.tmp'),
               connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
+                  '/bower_components',
+                  connect.static('./bower_components')
               ),
               connect.static('app'),
               connect.static('./')
@@ -106,8 +106,8 @@ module.exports = function (grunt) {
               connect.static('.tmp'),
               connect.static('test'),
               connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
+                  '/bower_components',
+                  connect.static('./bower_components')
               ),
               connect.static(appConfig.app)
             ];
@@ -126,7 +126,7 @@ module.exports = function (grunt) {
 
     eslint: {
       options: {
-        eslintrc: '<%= config.appPath %>/.eslintrc'
+        eslintrc: '.eslintrc'
       },
       app: {
         src: [
@@ -178,8 +178,8 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       target: {
-        src: '<%= config.appPath %>/index.html',
-        ignorePath: '<%= config.appPath %>/',
+        src: 'index.html',
+        ignorePath: './',
         exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ]
       },
       test: {
@@ -218,7 +218,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: ['<%= config.appPath %>/index.html'],
+      html: ['<%= index.html'],
       options: {
         dest: '<%= config.distPath %>/public'
       }
@@ -248,7 +248,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.appPath %>/assets/images',
+          cwd: 'assets/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
           dest: '<%= config.distPath %>/public/assets/images'
         }]
@@ -259,7 +259,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.appPath %>/assets/images',
+          cwd: 'assets/images',
           src: '{,*/}*.svg',
           dest: '<%= config.distPath %>/public/assets/images'
         }]
@@ -296,13 +296,13 @@ module.exports = function (grunt) {
         usemin: 'app/app.js'
       },
       main: {
-        cwd: '<%= config.appPath %>',
-        src: ['{app}/**/*.html'],
+        cwd: './',
+        src: ['app/**/*.html'],
         dest: '.tmp/templates.js'
       },
       tmp: {
         cwd: '.tmp',
-        src: ['{app}/**/*.html'],
+        src: ['app/**/*.html'],
         dest: '.tmp/tmp-templates.js'
       }
     },
@@ -320,7 +320,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= config.appPath %>',
+          cwd: './',
           dest: '<%= config.distPath %>/public',
           src: [
             '*.{ico,png,txt}',
@@ -346,9 +346,9 @@ module.exports = function (grunt) {
       },
       styles: {
         expand: true,
-        cwd: '<%= config.appPath %>',
+        cwd: './',
         dest: '.tmp/',
-        src: ['{app}/**/*.css']
+        src: ['app/**/*.css']
       }
     },
 
@@ -409,8 +409,8 @@ module.exports = function (grunt) {
           expand: true,
           cwd: './',
           src: [
-            '{app}/**/*.js',
-            '!{app}/**/*.spec.js'
+            'app/**/*.js',
+            '!app/**/*.spec.js'
           ],
           dest: '.tmp'
         }]
@@ -421,14 +421,13 @@ module.exports = function (grunt) {
     less: {
       options: {
         paths: [
-          '<%= config.appPath %>/bower_components',
-          '<%= config.appPath %>/app',
-          '<%= config.appPath %>/components'
+          'bower_components',
+          'app'
         ]
       },
       server: {
         files: {
-          '.tmp/app/app.css' : '<%= config.appPath %>/app/app.less'
+          '.tmp/app/app.css' : 'app/app.less'
         }
       }
     },
@@ -450,9 +449,9 @@ module.exports = function (grunt) {
           endtag: '// endinjector'
         },
         files: {
-          '<%= config.appPath %>/app/app.less': [
+          '<%= config.appPath %>/app.less': [
             '<%= config.appPath %>/**/*.less',
-            '!<%= config.appPath %>/app/app.less'
+            '!<%= config.appPath %>/app.less'
           ]
         }
       },
@@ -469,7 +468,7 @@ module.exports = function (grunt) {
           endtag: '<!-- endinjector -->'
         },
         files: {
-          '<%= config.appPath %>/index.html': [
+          'index.html': [
             '<%= config.appPath %>/**/*.css'
           ]
         }
@@ -555,9 +554,9 @@ module.exports = function (grunt) {
     }
 
     else grunt.task.run([
-      'test:server',
-      'test:client'
-    ]);
+        'test:server',
+        'test:client'
+      ]);
   });
 
   grunt.registerTask('build', [

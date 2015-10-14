@@ -218,7 +218,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: ['<%= index.html'],
+      html: ['index.html'],
       options: {
         dest: '<%= config.distPath %>/public'
       }
@@ -299,11 +299,6 @@ module.exports = function (grunt) {
         cwd: './',
         src: ['app/**/*.html'],
         dest: '.tmp/templates.js'
-      },
-      tmp: {
-        cwd: '.tmp',
-        src: ['app/**/*.html'],
-        dest: '.tmp/tmp-templates.js'
       }
     },
 

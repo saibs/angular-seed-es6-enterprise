@@ -6,7 +6,9 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    protractor: 'grunt-protractor-runner'
+    protractor: 'grunt-protractor-runner',
+    'nggettext_extract': 'grunt-angular-gettext',
+    'nggettext_compile': 'grunt-angular-gettext'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -278,6 +280,32 @@ module.exports = function (grunt) {
       }
     },
 
+    nggettext_extract: {
+      pot: {
+        files: {
+          'po/template.pot': ['**/*.html']
+        }
+      }
+    },
+
+    nggettext_compile: {
+      all: {
+        options: {
+          format: "json"
+        },
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: "po",
+            dest: "languages",
+            src: ["*.po"],
+            ext: ".json"
+          }
+        ]
+      }
+    },
+
     // Package all the html partials into a single javascript payload
     ngtemplates: {
       options: {
@@ -311,11 +339,11 @@ module.exports = function (grunt) {
           dest: '<%= config.distPath %>/public',
           src: [
             '*.{ico,png,txt}',
-            '.htaccess',
             'bower_components/**/*',
             'assets/images/{,*/}*.{webp}',
             'assets/fonts/**/*',
-            'index.html'
+            'index.html',
+            'languages/**/*'
           ]
         }, {
           expand: true,
@@ -553,6 +581,7 @@ module.exports = function (grunt) {
     'ngtemplates',
     'concat',
     'ngAnnotate',
+    'nggettext_compile',
     'copy:dist',
     'cssmin',
     'uglify',
@@ -564,5 +593,9 @@ module.exports = function (grunt) {
     'eslint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('translate', [
+    'nggettext_extract'
   ]);
 };

@@ -330,13 +330,6 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= config.distPath %>/public/assets/images',
           src: ['generated/*']
-        }, {
-          expand: true,
-          dest: '<%= config.distPath %>',
-          src: [
-            'package.json',
-            'server/**/*'
-          ]
         }]
       },
       styles: {

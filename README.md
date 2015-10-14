@@ -12,7 +12,7 @@ Angular JS enterprise seed project using Angular 1.X and written in ES6.
 * [Karma](http://karma-runner.github.io/0.12/index.html) : Unit test runner
 * [Jasmine](http://jasmine.github.io/2.0/introduction.html) : BDD (Behavior Driven Development) oriented test framework
 * [Protractor](http://angular.github.io/protractor/#/) : End to end testing for AngularJS (UI Test)
-* [ES6](http://es6-features.org/) : Uses the latest version of Javascript. This is not supported by every browser, so have to transpile it to ES5 in the build system. Currently using [Browserify](http://browserify.org/)(Used with `Grunt` via `grunt-browserify` to support module loading , and [Babel](https://babeljs.io/) as transpiler(It can be used with `Browserify` via `babelify`).
+* [ES6](http://es6-features.org/) : Uses the latest version of Javascript. This is not supported by every browser, so have to transpile it to ES5 in the build system. Currently using [Browserify](http://browserify.org/)(Used with `Grunt` via `grunt-browserify` to support module loading , and [Babel](https://babeljs.io/) as transpiler(Used with `Browserify` via `babelify`).
 
 ## Features
 

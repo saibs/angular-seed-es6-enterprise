@@ -1,3 +1,4 @@
+Deprecated: Verify [this](https://github.com/saibs/list-repos)
 # angular-seed-es6-enterprise
 
 ## Description
